@@ -1,0 +1,110 @@
+body {
+    margin: 0px;
+    background-color: #052939;
+}
+.title {
+    background: #d52e3f;
+}
+.title h1 {
+    background: #d52e3f;
+    font-family: "Galada", cursive;
+    text-align: center;
+    font-size: 80px;
+    padding:0px;
+    color: #fcedd8;
+    text-shadow: 5px 5px 0px #eb452b, 
+                  10px 10px 0px #efa032, 
+                  15px 15px 0px #46b59b, 
+                  20px 20px 0px #017e7f, 
+                  25px 25px 0px #052939, 
+                  30px 30px 0px #c11a2b;
+
+
+}
+
+h1 {
+    background-color: #052939;
+    color:#efa032;
+    padding:10px;
+    margin:0px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.displayScreen h2{
+    display: inline-block;
+    color: #efa032;
+    padding: 10px;
+    margin: 0px 3px 3px 3px;
+    width: 100%;
+}
+
+#pagination {
+    display: inline-block;
+    padding:0px 10px;
+}
+
+#pagination span {
+    background-color: #eb452b;
+    color:#efa032;
+    font-size: 16pt;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+#pagination span.active {
+    background-color: #46b59b;
+    color: #d52e3f;
+}
+.bookBtn {
+    text-align: center;
+}
+.txt {
+    margin: 10px 50px 10px 50px ;
+    font-size: 16pt;
+    font-family: "Bree Serif", serif;
+}
+.deleteBtn {
+    font-size: inherit;
+    font-weight: bold;
+    background-color: #c11a2b;
+    color: white;
+    padding:10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px 20px 0px 20px;
+}
+
+.editBtn {
+    font-size: inherit;
+    font-weight: bold;
+    background-color: #1ac12e;
+    color: white;
+    padding:10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0px 20px 0px 20px;
+
+}
+
+.book {
+    background-color: #fcedd8;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 14pt;
+    color:#052939;
+    margin: 20px;
+}
+
+.book .id {
+    position:absolute;
+    right:50px;   
+}
+.spanBtn {
+    margin: 3px;
+    cursor: pointer;
+}
+
+.material-symbols-outlined {
+    vertical-align: -5px;
+}
