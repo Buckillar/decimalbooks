@@ -135,19 +135,57 @@ function searchBooks() {
 function displayBook(book, container) {
   const bookElement = document.createElement("div");
   bookElement.innerHTML = `<div class="book">
-                        <img class="imgBook" src="" id="imgBook-${book.id}" />
-                        <p class="id"><strong>ID:</strong> ${book.id}</p>
-                        <p class="txt"><strong>Title:</strong> ${book.bookTitle}</p>
-                        <p class="txt"><strong>Author:</strong> ${book.bookAuthor}</p>
-                        <p class="txt"><strong>Year:</strong> ${book.bookYear}</p>
+                        <img class="imgBook" src="assets/no-image.svg" id="imgBook-${book.id}" />
+                        <div class="infoBook">
+                          <p class="id"><strong>ID:</strong> ${book.id}</p>
+                          <p class="txt"><strong>Title:</strong> ${book.bookTitle}</p>
+                          <p class="txt"><strong>Author:</strong> ${book.bookAuthor}</p>
+                          <p class="txt"><strong>Year:</strong> ${book.bookYear}</p>
+                        </div>
                         <p class="bookBtn">
                         <button class="deleteBtn" onclick="deleteBook('${book.id}')"><span class="material-symbols-outlined">delete</span> Delete </button>
                         <button class="editBtn" onclick="editBook('${book.id}')"><span class="material-symbols-outlined">edit</span> Edit </button>
                         </p>
                         <div>`;
   container.appendChild(bookElement);
+  getBookCover(book.bookAuthor, book.bookTitle, book.id);
 }
 
+function getBookCover(author, title, bookId) {
+    // Construct the URL for the Open Library API search endpoint
+    const url = `https://openlibrary.org/search.json?author=${encodeURIComponent(
+      author
+    )}&title=${encodeURIComponent(title)}`;
+  
+    // Make a GET request to the API
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        // Check if any documents were found
+        if (data.docs && data.docs.length > 0) {
+          const firstResult = data.docs[0];
+          // Check if cover data exists
+          if (firstResult.cover_i) {
+            const coverId = firstResult.cover_i;
+            const coverUrl = `https://covers.openlibrary.org/b/id/${coverId}-L.jpg`;
+            // Set the src attribute of the corresponding image element
+            const imgBookElement = document.getElementById(`imgBook-${bookId}`);
+            if (imgBookElement) {
+              imgBookElement.src = coverUrl;
+            } else {
+              console.error(`No image element found for book ID: ${bookId}`);
+            }
+          } else {
+            console.log("No cover available for this book.");
+          }
+        } else {
+          console.log("No results found for this query.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data from Open Library API:", error);
+      });
+  }
 
 function updatePagination(currentPage, totalPages) {
   const paginationContainer = document.getElementById("pagination");

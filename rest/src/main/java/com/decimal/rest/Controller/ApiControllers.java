@@ -35,12 +35,10 @@ public class ApiControllers {
                                              @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Book> bookPage = bookRepo.findAll(pageable);
-
         PaginationResponse<Book> response = new PaginationResponse<>();
         response.setData(bookPage.getContent());
         response.setTotalPages(bookPage.getTotalPages());
         response.setTotalRecords(bookPage.getTotalElements());
-
         return response;
     }
     @GetMapping("/books/{id}")
