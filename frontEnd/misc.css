@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     background-color: #052939;
+    overflow-x: hidden;
 }
 .title {
     background: #d52e3f;
